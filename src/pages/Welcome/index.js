@@ -3,13 +3,23 @@ import React from 'react'
 import { 
     View, 
     Text,
-    StyleSheet
+    StyleSheet,
+    Image,
+    TouchableOpacity
 } from 'react-native'
 
 export default function Welcome() {
   return (
     <View style={styles.container}>
-      <Text>Tela Bem-vindo</Text>
+      
+      <View>
+        <Image // Logo pequena/branca
+          source={require('../../assets/LogoPequena.png')}
+          style={{ width: '100%' }}
+          resizeMode='contain'
+        />  
+      </View>
+    
     </View>
   )
 }
