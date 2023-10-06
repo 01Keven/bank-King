@@ -6,8 +6,22 @@ import {
     StyleSheet,
     Image,
     TouchableOpacity,
-    ImageBackground
+    ImageBackground,
+    FontVariant
 } from 'react-native'
+
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
+
+const index = () => {
+  let [fontLoaded] = useFonts({
+    
+  })
+
+  if (!fontLoaded) {
+    return <AppLoading/>
+  }
+} 
 
 export default function Welcome() {
   return (
@@ -16,22 +30,6 @@ export default function Welcome() {
       <Image source={require('../../assets/LogoPequena.png')} style={styles.imageForeground}/>
       <Text style={styles.title}>Bem Vindo</Text>
     </ImageBackground>
-
-
-
-      {/* <ImageBackground  
-          source={require('../../assets/BackgroundInicio.png')}
-          style={styles.containerImageBg}  
-      />
-      {<Image // Logo pequena/branca
-          source={require('../../assets/LogoPequena.png')}
-          style={styles.containerLogoPequena}
-          
-          resizeMode='contain'
-        />}
-
-      <Text style={styles.title}>Bem Vindo</Text> */}
-        
 
       <View style={styles.containerForm}>
         <Text style={styles.text}>Comece a jornada rumo ao seu sucesso financeiro com o bankKing.</Text>
@@ -58,7 +56,7 @@ const styles = StyleSheet.create({
     imageBackground:{
       flex: 2,
       width: 'auto',
-      height: 'auto',
+      height: 620,
       resizeMode: 'cover',
       justifyContent: 'center',
       alignItems: 'center'
@@ -67,7 +65,8 @@ const styles = StyleSheet.create({
     imageForeground:{
       width: 94,
       height: 55.49,
-
+      
+      
     },
     containerForm:{
       flex: 1,
@@ -76,6 +75,7 @@ const styles = StyleSheet.create({
       borderTopLeftRadius: 25,
       paddingStart: '9%',
       paddingEnd: '9%',
+      alignItems: 'center'
 
     },
     title:{
@@ -84,25 +84,34 @@ const styles = StyleSheet.create({
       fontWeight: '700',
       marginTop: 300,
       textAlign: 'center',
+    
+      
      
       
     },
     text:{
       fontSize: 24,
-      fontWeight: 'normal',
+      fontWeight: '400',
       marginTop: 28,
       marginBottom: 28,
       textAlign: 'center',
+
     },
     button:{
       position: 'absolute',
       backgroundColor: 'black',
       borderRadius: 50,
-      paddingVertical: 8,
+      paddingVertical: 20,
       width: '60%',
       alignItems: 'center',
-      bottom: '15%'
-
+      bottom: '15%',
+      justifyContent: 'center',
+      alignSelf: 'center'
+    },
+    buttonText:{
+      color: 'white',
+      fontSize: 24,
+      
     }
 
 })
