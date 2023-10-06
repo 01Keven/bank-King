@@ -34,7 +34,7 @@ export default function Welcome() {
         
 
       <View style={styles.containerForm}>
-        <Text style={styles.text}>Comece a jornada rumo ao seu sucesso financeiro com o BankKing.</Text>
+        <Text style={styles.text}>Comece a jornada rumo ao seu sucesso financeiro com o bankKing.</Text>
 
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Iniciar</Text>
@@ -51,13 +51,14 @@ export default function Welcome() {
 const styles = StyleSheet.create({
     container:{
       flex: 1,
-      flexDirection: 'column'
+
+
       //backgroundColor: "#555555"
     },
     imageBackground:{
       flex: 2,
-      width: 428,
-      height: 651,
+      width: 'auto',
+      height: 'auto',
       resizeMode: 'cover',
       justifyContent: 'center',
       alignItems: 'center'
@@ -65,16 +66,43 @@ const styles = StyleSheet.create({
     },
     imageForeground:{
       width: 94,
-      height: 55.49
+      height: 55.49,
+
     },
     containerForm:{
-      
       flex: 1,
-      backgroundColor: '#fff'
+      backgroundColor: '#fff',
+      borderTopRightRadius: 25,
+      borderTopLeftRadius: 25,
+      paddingStart: '9%',
+      paddingEnd: '9%',
+
     },
     title:{
       color: 'white',
-      textAlign: 'center'
+      fontSize: 56,
+      fontWeight: '700',
+      marginTop: 300,
+      textAlign: 'center',
+     
+      
+    },
+    text:{
+      fontSize: 24,
+      fontWeight: 'normal',
+      marginTop: 28,
+      marginBottom: 28,
+      textAlign: 'center',
+    },
+    button:{
+      position: 'absolute',
+      backgroundColor: 'black',
+      borderRadius: 50,
+      paddingVertical: 8,
+      width: '60%',
+      alignItems: 'center',
+      bottom: '15%'
+
     }
 
 })
