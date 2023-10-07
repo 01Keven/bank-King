@@ -1,5 +1,5 @@
 // componente funcional - rnfunction
-import React from 'react'
+import { React, useCallback, useEffect, useState } from 'react'
 import { 
     View, 
     Text,
@@ -7,26 +7,58 @@ import {
     Image,
     TouchableOpacity,
     ImageBackground,
-    FontVariant
 } from 'react-native'
 
-import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import * as Font from 'expo-font'
+import * as SplashScreen from 'expo-splash-screen'
+import { useFonts, Montserrat_400Regular, Montserrat_700Bold  } from '@expo-google-fonts/montserrat';
 
-const index = () => {
-  let [fontLoaded] = useFonts({
-    
-  })
-
-  if (!fontLoaded) {
-    return <AppLoading/>
-  }
-} 
+// SplashScreen.preventAutoHideAsync()
+ 
 
 export default function Welcome() {
+//   const [isReady, setIsReady] = useState(false)
+
+//   useEffect(() => {
+//     async function prepare() {
+//       try {
+//         await Font.loadAsync({
+//           Montserrat_400Regular, 
+//           Montserrat_700Bold,
+//         })
+//         await new Promise(resolve => setTimeout(() => resolve,2000)) 
+//       } catch (e) {
+//           console.warn(e)
+//       } finally {
+//           setIsReady(true)
+//       }
+//     }
+//     prepare()
+//   }, [])
+
+//   const onLayoutRootView = useCallback(() => {
+//     if (isReady) {
+//       SplashScreen.hideAsync()
+//     }
+//   },[isReady])
+
+//   if (!isReady) {
+//     return null
+//   }
+
+  let [fontLoaded] = useFonts({
+    Montserrat_400Regular,
+    Montserrat_700Bold
+  })
+  
+  if (!fontLoaded) {
+    return null
+    }
+
+
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('../../assets/BackgroundInicio.png')} style={styles.imageBackground}>
+      <ImageBackground source={require('../../assets/BackgroundInicio.png')} style={styles.imageBackground}> 
       <Image source={require('../../assets/LogoPequena.png')} style={styles.imageForeground}/>
       <Text style={styles.title}>Bem Vindo</Text>
     </ImageBackground>
@@ -49,8 +81,6 @@ export default function Welcome() {
 const styles = StyleSheet.create({
     container:{
       flex: 1,
-
-
       //backgroundColor: "#555555"
     },
     imageBackground:{
@@ -60,34 +90,29 @@ const styles = StyleSheet.create({
       resizeMode: 'cover',
       justifyContent: 'center',
       alignItems: 'center'
-      
     },
     imageForeground:{
       width: 94,
       height: 55.49,
-      
-      
     },
     containerForm:{
       flex: 1,
       backgroundColor: '#fff',
       borderTopRightRadius: 25,
       borderTopLeftRadius: 25,
-      paddingStart: '9%',
-      paddingEnd: '9%',
+      paddingStart: '17%',
+      paddingEnd: '17%',
       alignItems: 'center'
 
     },
     title:{
       color: 'white',
       fontSize: 56,
-      fontWeight: '700',
+      fontWeight: 'bold',
       marginTop: 300,
       textAlign: 'center',
+      fontFamily: 'Montserrat_700Bold'
     
-      
-     
-      
     },
     text:{
       fontSize: 24,
@@ -95,6 +120,7 @@ const styles = StyleSheet.create({
       marginTop: 28,
       marginBottom: 28,
       textAlign: 'center',
+      fontFamily: 'Montserrat_400Regular'
 
     },
     button:{
@@ -102,7 +128,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'black',
       borderRadius: 50,
       paddingVertical: 20,
-      width: '60%',
+      width: '50%',
       alignItems: 'center',
       bottom: '15%',
       justifyContent: 'center',
@@ -115,3 +141,4 @@ const styles = StyleSheet.create({
     }
 
 })
+
