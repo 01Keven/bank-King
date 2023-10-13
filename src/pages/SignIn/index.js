@@ -8,11 +8,11 @@ export default function SignIn() {
   return (
     <View style={styles.container}>
       <View>
-        <Animatable.Image animation="fadeInDown"  source={require('../../assets/Logo.png')} style={styles.containerHeader}/>
-        <Animatable.Text animation="fadeInUp" style={styles.title}>Comece a jornada rumo ao seu sucesso financeiro com o Bankking.</Animatable.Text>
+        <Animatable.Image animation="flipInY"  source={require('../../assets/Logo.png')} style={styles.containerHeader}/>
+        <Animatable.Text delay={600}animation="fadeInLeft" style={styles.title}>Comece a jornada rumo ao seu sucesso financeiro com o Bankking.</Animatable.Text>
       </View>
     
-      <Animatable.View animation="fadeInUp" style={styles.containerForm}>
+      <Animatable.View delay={800} animation="fadeInUp" style={styles.containerForm}>
         <TextInput placeholder='CPF/CNPJ'
         style={styles.input}/>
         <TextInput placeholder='Senha'
@@ -38,11 +38,13 @@ const styles = StyleSheet.create({
   containerForm:{
   },
   containerHeader:{
+    width: 226,
+    height: 133.422,
     marginEnd: '20%',
     marginStart: '20%',
     alignItems: 'center',
-    marginTop: 87,
-    marginBottom: 74.78   
+    marginTop: 64,
+    marginBottom: 64  
   },
   title:{
     textAlign: 'center',
