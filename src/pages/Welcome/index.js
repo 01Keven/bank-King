@@ -12,65 +12,32 @@ import {
 import * as Font from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { useFonts, Montserrat_400Regular, Montserrat_700Bold  } from '@expo-google-fonts/montserrat';
-
+import * as Animatable from 'react-native-animatable'
+import { useNavigation } from '@react-navigation/native'
 // SplashScreen.preventAutoHideAsync()
  
 
 export default function Welcome() {
-//   const [isReady, setIsReady] = useState(false)
-
-//   useEffect(() => {
-//     async function prepare() {
-//       try {
-//         await Font.loadAsync({
-//           Montserrat_400Regular, 
-//           Montserrat_700Bold,
-//         })
-//         await new Promise(resolve => setTimeout(() => resolve,2000)) 
-//       } catch (e) {
-//           console.warn(e)
-//       } finally {
-//           setIsReady(true)
-//       }
-//     }
-//     prepare()
-//   }, [])
-
-//   const onLayoutRootView = useCallback(() => {
-//     if (isReady) {
-//       SplashScreen.hideAsync()
-//     }
-//   },[isReady])
-
-//   if (!isReady) {
-//     return null
-//   }
-
-  let [fontLoaded] = useFonts({
-    Montserrat_400Regular,
-    Montserrat_700Bold
-  })
+  const navigation = useNavigation()
   
-  if (!fontLoaded) {
-    return null
-    }
-
-
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('../../assets/BackgroundInicio.png')} style={styles.imageBackground}> 
-      <Image source={require('../../assets/LogoPequena.png')} style={styles.imageForeground}/>
-      <Text style={styles.title}>Bem Vindo</Text>
+      <ImageBackground animation="flipInX" source={require('../../assets/BackgroundInicio.png')} style={styles.imageBackground}> 
+      <Animatable.Image delay={400} animation="flipInY" source={require('../../assets/LogoPequena.png')} style={styles.imageForeground}/>
+      <Animatable.Text delay={100} animation="slideInUp" style={styles.title}>Bem Vindo</Animatable.Text>
     </ImageBackground>
 
-      <View style={styles.containerForm}>
+      <Animatable.View animation="fadeInUp" style={styles.containerForm}>
         <Text style={styles.text}>Comece a jornada rumo ao seu sucesso financeiro com o bankKing.</Text>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={ () => navigation.navigate('SignIn') }
+          >
           <Text style={styles.buttonText}>Iniciar</Text>
         </TouchableOpacity>
 
-      </View>
+      </Animatable.View>
 
       
     
@@ -81,7 +48,7 @@ export default function Welcome() {
 const styles = StyleSheet.create({
     container:{
       flex: 1,
-      //backgroundColor: "#555555"
+      backgroundColor: "black"
     },
     imageBackground:{
       flex: 2,
@@ -89,19 +56,19 @@ const styles = StyleSheet.create({
       height: 620,
       resizeMode: 'cover',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     },
     imageForeground:{
       width: 94,
-      height: 55.49,
+      height: 55.49
     },
     containerForm:{
       flex: 1,
       backgroundColor: '#fff',
       borderTopRightRadius: 25,
       borderTopLeftRadius: 25,
-      paddingStart: '17%',
-      paddingEnd: '17%',
+      paddingStart: 50,
+      paddingEnd: 50,
       alignItems: 'center'
 
     },
@@ -111,16 +78,16 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       marginTop: 300,
       textAlign: 'center',
-      fontFamily: 'Montserrat_700Bold'
+      //fontFamily: 'Montserrat_700Bold'
     
     },
     text:{
       fontSize: 24,
       fontWeight: '400',
-      marginTop: 28,
+      marginTop: 36,
       marginBottom: 28,
       textAlign: 'center',
-      fontFamily: 'Montserrat_400Regular'
+      //fontFamily: 'Montserrat_400Regular'
 
     },
     button:{
@@ -137,6 +104,8 @@ const styles = StyleSheet.create({
     buttonText:{
       color: 'white',
       fontSize: 24,
+      fontWeight: '700',
+      textAlign: 'center'
       
     }
 
