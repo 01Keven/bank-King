@@ -28,13 +28,13 @@ export default function Welcome() {
     </ImageBackground>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-        <Text style={styles.text}>Comece a jornada rumo ao seu sucesso financeiro com o bankKing.</Text>
-
+        <Text style={styles.text}>Comece a jornada rumo ao seu sucesso financeiro com o bankking.</Text>
+      
         <TouchableOpacity
           style={styles.button}
           onPress={ () => navigation.navigate('SignIn') }
           >
-          <Text style={styles.buttonText}>Iniciar</Text>
+          <Animatable.Text animation="pulse" easing="ea´-uose-out" iterationCount="infinite" style={styles.buttonText}>Iniciar</Animatable.Text>
         </TouchableOpacity>
 
       </Animatable.View>
@@ -60,15 +60,17 @@ const styles = StyleSheet.create({
     },
     imageForeground:{
       width: 94,
-      height: 55.49
+      height: 55.49,
+      marginBottom: 250
+
     },
     containerForm:{
       flex: 1,
       backgroundColor: '#fff',
       borderTopRightRadius: 25,
       borderTopLeftRadius: 25,
-      paddingStart: 50,
-      paddingEnd: 50,
+      paddingStart: '8%',
+      paddingEnd: '8%',
       alignItems: 'center'
 
     },
@@ -76,7 +78,8 @@ const styles = StyleSheet.create({
       color: 'white',
       fontSize: 56,
       fontWeight: 'bold',
-      marginTop: 300,
+      marginTop: 30,
+      marginBottom: 20,
       textAlign: 'center',
       //fontFamily: 'Montserrat_700Bold'
     
