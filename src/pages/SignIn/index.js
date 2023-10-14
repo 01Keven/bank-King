@@ -2,14 +2,19 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native'
 
+import { useNavigation } from '@react-navigation/native'
 import * as Animatable from 'react-native-animatable'
 
 export default function SignIn() {
+
+  const navigation = useNavigation()
+  const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
+
   return (
     <View style={styles.container}>
       <View>
         <Animatable.Image animation="flipInY"  source={require('../../assets/Logo.png')} style={styles.containerHeader}/>
-        <Animatable.Text delay={600}animation="fadeInLeft" style={styles.title}>Comece a jornada rumo ao seu sucesso financeiro com o Bankking.</Animatable.Text>
+        <Animatable.Text delay={600}animation="fadeInLeft" style={styles.title}>Comece a jornada rumo ao seu sucesso financeiro com o <B>BankKing.</B></Animatable.Text>
       </View>
     
       <Animatable.View delay={800} animation="fadeInUp" style={styles.containerForm}>
@@ -18,7 +23,9 @@ export default function SignIn() {
         <TextInput placeholder='Senha'
         style={styles.input}/>
      
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button}
+      onPress={ () => navigation.navigate('Balance') }
+      >
         <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={styles.buttonText}>Login</Animatable.Text>
       
       </TouchableOpacity>
@@ -81,7 +88,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
-    marginTop: 25,
+    marginTop: 40,
     marginBottom: 160
   },
   buttonText:{

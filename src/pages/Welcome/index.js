@@ -19,7 +19,8 @@ import { useNavigation } from '@react-navigation/native'
 
 export default function Welcome() {
   const navigation = useNavigation()
-  
+  const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
+
   return (
     <View style={styles.container}>
       <ImageBackground animation="flipInX" source={require('../../assets/BackgroundInicio.png')} style={styles.imageBackground}> 
@@ -28,7 +29,7 @@ export default function Welcome() {
     </ImageBackground>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-        <Text style={styles.text}>Comece a jornada rumo ao seu sucesso financeiro com o bankking.</Text>
+        <Text style={styles.text}>Comece a jornada rumo ao seu sucesso financeiro com o <B>BankKing</B></Text>
       
         <TouchableOpacity
           style={styles.button}
